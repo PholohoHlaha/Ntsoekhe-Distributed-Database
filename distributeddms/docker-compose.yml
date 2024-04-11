@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  Hospital_CenterDB:
+    image: postgres:16.2-alpine3.19
+    container_name: Hospital_CenterDB
+    environment:
+      POSTGRES_DB: db2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5431:5432"
+
+  Tertiary_CenterDB:
+    image: postgres:16.2-alpine3.19
+    container_name: Tertiary_CenterDB
+    environment:
+      POSTGRES_DB: db3
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+
+  Northern_PatientsRecordDB:
+    image: postgres:16.2-alpine3.19
+    container_name: Northern_PatientsRecordDB
+    environment:
+      POSTGRES_DB: db4
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"

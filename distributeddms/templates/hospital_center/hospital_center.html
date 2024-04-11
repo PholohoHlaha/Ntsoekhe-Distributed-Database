@@ -1,0 +1,67 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1>Add Hospital Center</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.address.label_tag }}
+                            {{ form.address }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.Town.label_tag }}
+                            {{ form.Town }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.Region.label_tag }}
+                            {{ form.Region }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.District.label_tag }}
+                            {{ form.District }}
+                        </div>
+                        <input class="btn btn-info" type="submit" value="Save">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1>Hospital Centers</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Town</th>
+                                <th>Region</th>
+                                <th>District</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for center in hospital_centers %}
+                            <tr>
+                                <td>{{ center.name }}</td>
+                                <td>{{ center.address }}</td>
+                                <td>{{ center.Town }}</td>
+                                <td>{{ center.Region }}</td>
+                                <td>{{ center.District }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

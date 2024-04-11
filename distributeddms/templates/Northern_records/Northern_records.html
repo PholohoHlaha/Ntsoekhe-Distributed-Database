@@ -1,0 +1,79 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.age.label_tag }}
+                            {{ form.age }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.gender.label_tag }}
+                            {{ form.gender }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.region.label_tag }}
+                            {{ form.region }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.diagnosis.label_tag }}
+                            {{ form.diagnosis }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.admission_date.label_tag }}
+                            {{ form.admission_date }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.discharge_date.label_tag }}
+                            {{ form.discharge_date }}
+                        </div>
+                        <input class="btn btn-info" type="submit" value="Save">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1>Patient Records</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Region</th>
+                                <th>Diagnosis</th>
+                                <th>Admission Date</th>
+                                <th>Discharge Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in patientRecords %}
+                            <tr>
+                                <td>{{ record.name }}</td>
+                                <td>{{ record.age }}</td>
+                                <td>{{ record.get_gender_display }}</td>
+                                <td>{{ record.region }}</td>
+                                <td>{{ record.diagnosis }}</td>
+                                <td>{{ record.admission_date }}</td>
+                                <td>{{ record.discharge_date }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

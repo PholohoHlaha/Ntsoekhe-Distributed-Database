@@ -1,0 +1,55 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1>Add Tertiary Center</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.City.label_tag }}
+                            {{ form.City }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.Country.label_tag }}
+                            {{ form.Country }}
+                        </div>
+                        <input class="btn btn-info" type="submit" value="Save">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1>Tertiary Centers</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>Country</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for center in tertiary_centers %}
+                            <tr>
+                                <td>{{ center.name }}</td>
+                                <td>{{ center.City }}</td>
+                                <td>{{ center.Country }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
