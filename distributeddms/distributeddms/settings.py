@@ -99,8 +99,12 @@ DATABASES = {
         'PORT': '5433'
     },
     'Northern_PatientsRecordDB': {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "Patients_records.sqlite3"
+        'NAME': 'db4',
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'postgres',
+        'HOST':'localhost',
+        'PASSWORD': 'postgres',
+        'PORT': '5434'
     },
 }
 
